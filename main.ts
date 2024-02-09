@@ -19,70 +19,56 @@ input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
     送信用文字 = 送信用文字_送信時バックアップ
     カナ文字_メモリ = カナ文字_送信時バックアップ
 })
-input.onGesture(Gesture.TiltRight, function () {
-    if (2 <= 傾き) {
-        傾き = 2
-    } else {
-        傾き += 1
-        if (傾き == 1) {
-            basic.showArrow(ArrowNames.North)
-            basic.pause(500)
-            basic.clearScreen()
-        } else {
-            basic.showArrow(ArrowNames.East)
-            basic.pause(500)
-            basic.clearScreen()
-        }
-    }
-    katakana.showString("ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔ/ﾕ/ﾖﾗﾘﾙﾚﾛﾜ//ｦﾝｯｬｭ/ｮｧｨｩｪｫ!?_-｡､ﾞﾟ".substr(文字セレクター, 1))
-})
 // 文字選択
 input.onButtonPressed(Button.A, function () {
-    if (傾き == 1) {
-        basic.clearScreen()
-        if (文字セレクター == 67) {
+    basic.clearScreen()
+    if (入力カウンター == 0) {
+        文字セレクター += 1
+        if (文字セレクター >= 11) {
             文字セレクター = 0
         } else {
-            文字セレクター += 1
+            katakana.showString("ｱｶｻﾀﾅﾊﾏﾔﾗﾜｬｧ".substr(文字セレクター, 1))
         }
-        katakana.showString("ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔ/ﾕ/ﾖﾗﾘﾙﾚﾛﾜ//ｦﾝｯｬｭ/ｮｧｨｩｪｫ!?_-｡､ﾞﾟ".substr(文字セレクター, 1))
     } else {
-        if (傾き == 2) {
-            basic.clearScreen()
-            if (文字セレクター >= 67) {
-                文字セレクター = 0
+        basic.clearScreen()
+        basic.pause(200)
+        if (文字セレクター == 8) {
+            if (子音セレクター >= 4) {
+                子音セレクター = 0
             } else {
-                文字セレクター += 5
-                文字セレクター += -1 * (文字セレクター % 5)
+                子音セレクター += 1
             }
-            katakana.showString("ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔ/ﾕ/ﾖﾗﾘﾙﾚﾛﾜ//ｦﾝｯｬｭ/ｮｧｨｩｪｫ!?_-｡､ﾞﾟ".substr(文字セレクター, 1))
+            katakana.showString("ﾔﾕﾖ".substr(子音セレクター, 1))
+        } else if (文字セレクター == 10) {
+            if (子音セレクター >= 4) {
+                子音セレクター = 0
+            } else {
+                子音セレクター += 1
+            }
+            katakana.showString("ﾜｦﾝ".substr(子音セレクター, 1))
+        } else if (文字セレクター == 10) {
+            if (子音セレクター >= 5) {
+                子音セレクター = 0
+            } else {
+                子音セレクター += 1
+            }
+            katakana.showString("ｬｭｮｯ".substr(子音セレクター, 1))
+        } else if (文字セレクター == 11) {
+            if (子音セレクター >= 9) {
+                子音セレクター = 0
+            } else {
+                子音セレクター += 1
+            }
+            katakana.showString("ｧｨｩｪｫ!?_-｡､ﾞﾟ".substr(子音セレクター, 1))
         } else {
-            basic.clearScreen()
-            if (文字セレクター == 0) {
-                文字セレクター = 67
+            if (子音セレクター >= 4) {
+                子音セレクター = 0
             } else {
-                文字セレクター += -1
+                子音セレクター += 1
             }
-            katakana.showString("ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔ/ﾕ/ﾖﾗﾘﾙﾚﾛﾜ//ｦﾝｯｬｭ/ｮｧｨｩｪｫ!?_-｡､ﾞﾟ".substr(文字セレクター, 1))
+            katakana.showString("ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓ     ﾗﾘﾙﾚﾛ          ".substr(文字セレクター * 5 + 子音セレクター, 1))
         }
     }
-})
-input.onGesture(Gesture.TiltLeft, function () {
-    if (0 >= 傾き) {
-        傾き = 0
-    } else {
-        傾き += -1
-        if (傾き == 1) {
-            basic.showArrow(ArrowNames.North)
-            basic.pause(500)
-            basic.clearScreen()
-        } else {
-            basic.showArrow(ArrowNames.West)
-            basic.pause(500)
-            basic.clearScreen()
-        }
-    }
-    katakana.showString("ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔ/ﾕ/ﾖﾗﾘﾙﾚﾛﾜ//ｦﾝｯｬｭ/ｮｧｨｩｪｫ!?_-｡､ﾞﾟ".substr(文字セレクター, 1))
 })
 // 無線帯1005
 input.onPinPressed(TouchPin.P2, function () {
@@ -97,9 +83,10 @@ input.onPinPressed(TouchPin.P2, function () {
     basic.clearScreen()
     katakana.showString("ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔ/ﾕ/ﾖﾗﾘﾙﾚﾛﾜ//ｦﾝｯｬｭ/ｮｧｨｩｪｫ!?_-｡､ﾞﾟ".substr(文字セレクター, 1))
 })
-// 取り消し(試験的1
+// 取り消し(
 input.onGesture(Gesture.Shake, function () {
     if (1 == 試験的) {
+        let カナ文字_取り消し時バックアップ = ""
         送信用文字 = 送信用文字_取り消し時バックアップ
         カナ文字 = カナ文字_取り消し時バックアップ
         送信用文字_メモリ = 送信用文字
@@ -125,9 +112,27 @@ input.onGesture(Gesture.Shake, function () {
 // メッセージバックアップ
 input.onButtonPressed(Button.AB, function () {
     if (互換モード == 1) {
-        radio.sendString(送信用文字)
-    } else {
+        互換文字カウンター = 0
+        互換文字数カウンター = 0
+        while (送信用文字.length / 2 > 互換文字数カウンター) {
+            互換文字カウンター = "AaAiAuAeAoKaKiKuKeKoSaSiSuSeSoTaTiTuTeToNaNiNuNeNoHahiHuHeHoMaMiMuMeMoYaYuYoRaRiRuReROWaWoWvLaLiLuLeXbXcXdXfXgXhXjXlXpXq".indexOf(送信用文字.substr(互換文字数カウンター * 2, 2))
+            互換文字 = "" + 互換文字_メモリ + "ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜｦﾝｯｬｭｮｧｨｩｪｫ!?_-｡､ﾞﾟ".charAt(互換文字カウンター / 2)
+            互換文字_メモリ = 互換文字
+            互換文字数カウンター += 1
+        }
+        互換文字カウンター = 1
+        互換文字数カウンター = 0
+        送信用文字 = ""
+        while (互換文字_メモリ.length > 互換文字数カウンター) {
+            互換文字カウンター = "ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔ/ﾕ/ﾖﾗﾘﾙﾚﾛﾜ//ｦﾝｯｬｭ/ｮｧｨｩｪｫ!?_-｡､ﾞﾟ".indexOf(互換文字_メモリ.substr(互換文字数カウンター, 1))
+            送信用文字_メモリ = "" + 送信用文字 + "a/i/u/e/o/kakikukekosasisusesotatitutetonaninunenohahihuhehomamimumemoya//yu//yorarirurerowa////wonnttlsld//lflalilulelo!/?/A/B/C/D/E/F/".substr(互換文字カウンター * 2, 2)
+            送信用文字_取り消し時バックアップ = 送信用文字
+            送信用文字 = 送信用文字_メモリ
+            互換文字数カウンター += 1
+        }
         radio.sendString("##" + 送信用文字)
+    } else {
+        radio.sendString("**" + 送信用文字)
     }
     カナ文字_送信時バックアップ = カナ文字_メモリ
     送信用文字_送信時バックアップ = 送信用文字
@@ -150,6 +155,14 @@ radio.onReceivedString(function (receivedString) {
             カナ文字_受信時メモリ = カナ文字_受信時
             受信文字数カウンター += 1
         }
+    } else if (receivedString.substr(0, 2) == "**") {
+        受信文字数カウンター = 1
+        while (receivedString.length / 2 > 受信文字数カウンター) {
+            復号化用カウンター = "AaAiAuAeAoKaKiKuKeKoSaSiSuSeSoTaTiTuTeToNaNiNuNeNoHahiHuHeHoMaMiMuMeMoYaYuYoRaRiRuReROWaWoWvLaLiLuLeXbXcXdXfXgXhXjXlXpXq".indexOf(receivedString.substr(受信文字数カウンター * 2, 2))
+            カナ文字_受信時 = "" + カナ文字_受信時メモリ + "ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜｦﾝｯｬｭｮｧｨｩｪｫ!?_-｡､ﾞﾟ".charAt(復号化用カウンター / 2)
+            カナ文字_受信時メモリ = カナ文字_受信時
+            受信文字数カウンター += 1
+        }
     } else {
         受信文字数カウンター = 0
         while (receivedString.length > 受信文字数カウンター) {
@@ -169,29 +182,23 @@ radio.onReceivedString(function (receivedString) {
 // メッセージ保存
 // メッセージ暗号化
 input.onButtonPressed(Button.B, function () {
-    if (互換モード == 1) {
-        送信用文字_メモリ = "" + 送信用文字 + "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghij\\k\\lmnopqr\\\\stuvw\\xyz1234567890!".substr(文字セレクター, 1)
-        カナ文字_メモリ = "" + カナ文字 + "ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔ/ﾕ/ﾖﾗﾘﾙﾚﾛﾜ//ｦﾝｯｬｭ/ｮｧｨｩｪｫ!?_-｡､ﾞﾟ".substr(文字セレクター, 1)
-        送信用文字_取り消し時バックアップ = 送信用文字
-        カナ文字_取り消し時バックアップ = カナ文字
+    if (入力カウンター == 0) {
+        送信用文字_メモリ = "" + 送信用文字 + "AKSTNHMYRWLX".substr(文字セレクター, 1)
         送信用文字 = 送信用文字_メモリ
-        カナ文字 = カナ文字_メモリ
+        入力カウンター = 1
     } else {
-        if (文字セレクター == 66 && カナ文字.length == 0) {
-            basic.clearScreen()
-            katakana.setScrollTime(50)
-            katakana.showString("ｺﾞｶﾝ")
-            katakana.setScrollTime(100)
-            basic.clearScreen()
-            互換モード = 1
-        } else {
-            送信用文字_メモリ = "" + 送信用文字 + "a/i/u/e/o/kakikukekosasisusesotatitutetonaninunenohahihuhehomamimumemoya//yu//yorarirurerowa////wonnttlsld//lflalilulelo!/?/A/B/C/D/E/F/".substr(文字セレクター * 2, 2)
-            カナ文字_メモリ = "" + カナ文字 + "ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔ/ﾕ/ﾖﾗﾘﾙﾚﾛﾜ//ｦﾝｯｬｭ/ｮｧｨｩｪｫ!?_-｡､ﾞﾟ".substr(文字セレクター, 1)
-            送信用文字_取り消し時バックアップ = 送信用文字
-            カナ文字_取り消し時バックアップ = カナ文字
+        basic.clearScreen()
+        basic.pause(200)
+        if (文字セレクター == 11) {
+            送信用文字_メモリ = "" + 送信用文字 + "bcdfghjlmpq".substr(子音セレクター, 1)
             送信用文字 = 送信用文字_メモリ
-            カナ文字 = カナ文字_メモリ
+        } else {
+            送信用文字_メモリ = "" + 送信用文字 + "aiueo".substr(子音セレクター, 1)
+            送信用文字 = 送信用文字_メモリ
         }
+        入力カウンター = 0
+        文字セレクター = 0
+        katakana.showString("ｱ")
     }
 })
 // 無線帯1003
@@ -209,38 +216,32 @@ input.onPinPressed(TouchPin.P1, function () {
 })
 // 入力文字確認
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
-    if (傾き == 0) {
-        basic.clearScreen()
-        katakana.showString(カナ文字_受信時)
-        basic.clearScreen()
-        katakana.showString("ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔ/ﾕ/ﾖﾗﾘﾙﾚﾛﾜ//ｦﾝｯｬｭ/ｮｧｨｩｪｫ!?_-｡､ﾞﾟ".substr(文字セレクター, 1))
-    } else {
-        basic.clearScreen()
-        katakana.showString(カナ文字_メモリ)
-        basic.clearScreen()
-        katakana.showString("ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔ/ﾕ/ﾖﾗﾘﾙﾚﾛﾜ//ｦﾝｯｬｭ/ｮｧｨｩｪｫ!?_-｡､ﾞﾟ".substr(文字セレクター, 1))
-    }
+    互換モード = 1
 })
 // 初期設定(リセット)
 let 復号化用カウンター = 0
 let 受信文字数カウンター = 0
 let カナ文字_受信時 = ""
 let カナ文字_受信時メモリ = ""
+let 互換文字_メモリ = ""
+let 互換文字 = ""
+let 互換文字数カウンター = 0
+let 互換文字カウンター = 0
 let 送信用文字_メモリ = ""
-let カナ文字_取り消し時バックアップ = ""
 let カナ文字 = ""
 let 送信用文字_取り消し時バックアップ = ""
+let 子音セレクター = 0
+let 入力カウンター = 0
 let カナ文字_送信時バックアップ = ""
 let カナ文字_メモリ = ""
 let 送信用文字_送信時バックアップ = ""
 let 送信用文字 = ""
 let 互換モード = 0
 let 文字セレクター = 0
-let 傾き = 0
 let 試験的 = 0
 katakana.setScrollTime(100)
 試験的 = 0
-傾き = 1
+let 傾き = 1
 radio.setGroup(1001)
 文字セレクター = 0
 katakana.showString("ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜｦﾝｯｬｭｮｧｨｩｪｫ!?_-｡､ﾞﾟ".substr(文字セレクター, 1))
