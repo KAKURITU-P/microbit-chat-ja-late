@@ -131,6 +131,26 @@ input.onButtonPressed(Button.AB, function () {
             互換文字数カウンター += 1
         }
         radio.sendString("##" + 送信用文字)
+    } else if (互換モード == 2) {
+        互換文字カウンター = 0
+        互換文字数カウンター = 0
+        while (送信用文字.length / 2 > 互換文字数カウンター) {
+            互換文字カウンター = "AaAiAuAeAoKaKiKuKeKoSaSiSuSeSoTaTiTuTeToNaNiNuNeNoHahiHuHeHoMaMiMuMeMoYaYuYoRaRiRuReROWaWoWvLaLiLuLeXbXcXdXfXgXhXjXlXpXq".indexOf(送信用文字.substr(互換文字数カウンター * 2, 2))
+            互換文字 = "" + 互換文字_メモリ + "ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜｦﾝｯｬｭｮｧｨｩｪｫ!?_-｡､ﾞﾟ".charAt(互換文字カウンター / 2)
+            互換文字_メモリ = 互換文字
+            互換文字数カウンター += 1
+        }
+        互換文字カウンター = 1
+        互換文字数カウンター = 0
+        送信用文字 = ""
+        while (互換文字_メモリ.length > 互換文字数カウンター) {
+            互換文字カウンター = "ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔ/ﾕ/ﾖﾗﾘﾙﾚﾛﾜ//ｦﾝｯｬｭ/ｮｧｨｩｪｫ!?_-｡､ﾞﾟ".indexOf(互換文字_メモリ.substr(互換文字数カウンター, 1))
+            送信用文字_メモリ = "" + 送信用文字 + "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghij\\k\\lmnopqr\\\\stuvw\\xyz1234567890!".substr(互換文字カウンター, 1)
+            送信用文字_取り消し時バックアップ = 送信用文字
+            送信用文字 = 送信用文字_メモリ
+            互換文字数カウンター += 1
+        }
+        radio.sendString(送信用文字)
     } else {
         radio.sendString("**" + 送信用文字)
     }
@@ -216,7 +236,20 @@ input.onPinPressed(TouchPin.P1, function () {
 })
 // 入力文字確認
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
-    互換モード = 1
+    basic.clearScreen()
+    katakana.setScrollTime(50)
+    if (互換モード >= 2) {
+        互換モード = 0
+        katakana.showString("ｺﾞｶﾝﾅｼ")
+    } else {
+        互換モード += 1
+    }
+    if (互換モード == 2) {
+        katakana.showString("ｺﾞｶﾝ2")
+    } else if (互換モード == 1) {
+        katakana.showString("ｺﾞｶﾝ1")
+    }
+    katakana.setScrollTime(100)
 })
 // 初期設定(リセット)
 let 復号化用カウンター = 0
