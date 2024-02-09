@@ -24,37 +24,36 @@ input.onButtonPressed(Button.A, function () {
     basic.clearScreen()
     if (入力カウンター == 0) {
         文字セレクター += 1
-        if (文字セレクター >= 11) {
+        if (文字セレクター >= 12) {
             文字セレクター = 0
-        } else {
-            katakana.showString("ｱｶｻﾀﾅﾊﾏﾔﾗﾜｬｧ".substr(文字セレクター, 1))
         }
+        katakana.showString("ｱｶｻﾀﾅﾊﾏﾔﾗﾜｬｧ".substr(文字セレクター, 1))
     } else {
         basic.clearScreen()
         basic.pause(200)
-        if (文字セレクター == 8) {
-            if (子音セレクター >= 4) {
+        if (文字セレクター == 7) {
+            if (子音セレクター >= 2) {
                 子音セレクター = 0
             } else {
                 子音セレクター += 1
             }
             katakana.showString("ﾔﾕﾖ".substr(子音セレクター, 1))
-        } else if (文字セレクター == 10) {
-            if (子音セレクター >= 4) {
+        } else if (文字セレクター == 9) {
+            if (子音セレクター >= 2) {
                 子音セレクター = 0
             } else {
                 子音セレクター += 1
             }
             katakana.showString("ﾜｦﾝ".substr(子音セレクター, 1))
         } else if (文字セレクター == 10) {
-            if (子音セレクター >= 5) {
+            if (子音セレクター >= 3) {
                 子音セレクター = 0
             } else {
                 子音セレクター += 1
             }
             katakana.showString("ｬｭｮｯ".substr(子音セレクター, 1))
         } else if (文字セレクター == 11) {
-            if (子音セレクター >= 9) {
+            if (子音セレクター >= 12) {
                 子音セレクター = 0
             } else {
                 子音セレクター += 1
@@ -217,9 +216,9 @@ input.onButtonPressed(Button.B, function () {
             送信用文字 = 送信用文字_メモリ
         }
         入力カウンター = 0
-        文字セレクター = 0
-        katakana.showString("ｱ")
+        子音セレクター = 0
     }
+    katakana.showString("ｱｶｻﾀﾅﾊﾏﾔﾗﾜｬｧ".substr(文字セレクター, 1))
 })
 // 無線帯1003
 input.onPinPressed(TouchPin.P1, function () {
