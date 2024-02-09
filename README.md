@@ -24,12 +24,9 @@
 また、現行版との通信は互換モードを使用してね(支離滅裂な文章になる場合があるよ)
 
 ## Githubのページ
-* [githubのページ](https://github.com/KAKURITU-P/microbit-chat-ja)
+* [githubのページ](https://github.com/KAKURITU-P/microbit-chat-ja-latee.git)
 
-## Lite版はこっち↓
-* [基本的な操作方法](https://kakuritu-p.github.io/microbit-chat-ja-lite/)
-* [githubのページ](https://github.com/KAKURITU-P/microbit-chat-ja-lite)
- 
+
 ## 拡張機能として使用
 
 このリポジトリは、MakeCode で **拡張機能** として追加できるらしい。
