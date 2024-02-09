@@ -1,40 +1,27 @@
 
-## 最新バージョン：v 2.1.3
+## 最新バージョン：v 1.1.1
 
 ## 基本的な操作方法
 
-> 右に傾ける：
-> 
-> * ⇧表示時：Aボタン　あいうえお...　順送り
-> * ⇨表示時：Aボタン　あかさたな...　順送り
+* Aボタン：文字選択
+* Bボタン：文字決定
+* A+Bボタン ：送信
+* ロゴ短タップ：互換モード切替
+* ロゴ長タップ：メッセージ復元
 
-> 左に傾ける：
-> 
-> * ⇧表示時：Aボタン　あいうえお...　順送り
-> * ⇦表示時：Aボタン　あいうえお...　逆送り
-> * ⇦表示時：ロゴ短tap　受信データの再確認
-
-
-
-* Aボタン：あいうえお...　順(逆)送り
-* Bボタン：文字選択(空)
-* A+Bボタン：メッセージ送信(空)
-* ロゴを短くタップ：送信メッセージ確認
-* ロゴを長くタップ：送信メッセージ復元
-
-## 1.x.xとの互換モードを追加したよ
-> <s>v2.1.0～で互換モードは廃止する予定だよ</s>  いまのところまだ廃止してないよ
+## 通常版とLite版向け互換モードと1.x.xとの互換モードを追加したよ
+> <s>1.x.x向け互換モードはv2.0.0～で廃止する予定だよ</s>
 
 ★互換モードの入り方★
-* 一文字目の入力で「゛」を選択すると「ゴカン」と表示されるよ
+* ロゴを短くタップすると「ゴカン１」もしくは「ゴカン２」と表示されるよ
+
+* ゴカン１は現行バージョン向け互換モードだよ
+
+* ゴカン２は1.x.x系向け互換モードだよ
 
 　　そのまま送信したい文字列を入力してね（送信ごとに互換モードは解除されます(´;ω;｀)）
 
-また、1.x.x系Lite版との通信は互換モードを使用してね
-
-> Lite版2.x.xもあります
-
-  
+また、現行版との通信は互換モードを使用してね(支離滅裂な文章になる場合があるよ)
 
 ## Githubのページ
 * [githubのページ](https://github.com/KAKURITU-P/microbit-chat-ja)
@@ -63,24 +50,4 @@ MakeCode でこのリポジトリを編集していいよ。
 
 > このページを開く [https://kakuritu-p.github.io/microbit-chat-ja-late/](https://kakuritu-p.github.io/microbit-chat-ja-late/)
 
-## 拡張機能として使用
 
-このリポジトリは、MakeCode で **拡張機能** として追加できます。
-
-* [https://makecode.microbit.org/](https://makecode.microbit.org/) を開く
-* **新しいプロジェクト** をクリックしてください
-* ギアボタンメニューの中にある **拡張機能** をクリックしてください
-* **https://github.com/kakuritu-p/microbit-chat-ja-late** を検索してインポートします。
-
-## このプロジェクトを編集します
-
-MakeCode でこのリポジトリを編集します。
-
-* [https://makecode.microbit.org/](https://makecode.microbit.org/) を開く
-* **読み込む** をクリックし、 **URLから読み込む...** をクリックしてください
-* **https://github.com/kakuritu-p/microbit-chat-ja-late** を貼り付けてインポートをクリックしてください
-
-#### メタデータ (検索、レンダリングに使用)
-
-* for PXT/microbit
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
